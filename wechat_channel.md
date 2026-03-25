@@ -39,6 +39,7 @@ qrterm.default.generate(
 ```typescript
 // setup.ts (39-45 行)
 async function fetchQRCode(baseUrl: string): Promise<QRCodeResponse> {
+  const base = baseUrl.endsWith("/") ? baseUrl : `${baseUrl}/`;
   const url = `${base}ilink/bot/get_bot_qrcode?bot_type=${BOT_TYPE}`;
   const res = await fetch(url);
   return (await res.json()) as QRCodeResponse;
